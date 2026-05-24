@@ -1,0 +1,14 @@
+{
+  "id": "example_software",
+  "type": "job",
+  "_note": "EXAMPLE — software engineering roles via jobspy (Indeed + Google Jobs). Copy this file, rename it, and edit include/exclude/sources for your own search. Region is set in config.json -> jobspy.",
+  "sources": [
+    {
+      "id": "software_jobspy",
+      "source": "jobspy",
+      "include": ["software engineer backend python"],
+      "max_results": 40
+    }
+  ],
+  "exclude": ["unpaid", "internship", "commission only"]
+}

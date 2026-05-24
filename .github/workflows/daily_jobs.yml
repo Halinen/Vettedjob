@@ -1,0 +1,51 @@
+name: Daily Job Search
+
+on:
+  schedule:
+    - cron: '0 6 * * 1-5'
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
+
+      - run: playwright install --with-deps chromium
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/pool.json
+            data/eval_log.csv
+            data/last_run.json
+          key: job-state-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: job-state-${{ runner.os }}-
+
+      - name: Run
+        working-directory: .
+        run: python scripts/cloud_run.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+
+      - name: Commit updated indices
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/pool.json data/eval_log.csv data/last_run.json
+          git add jobs_index.csv dashboard.md || true
+          git diff --cached --quiet || git commit -m "chore: daily job sync $(date +%F)"
+          git push

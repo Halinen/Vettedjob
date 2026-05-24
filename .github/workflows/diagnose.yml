@@ -1,0 +1,55 @@
+name: Diagnose Eval (one-shot)
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Evaluation date (YYYY-MM-DD)'
+        required: false
+        default: '2026-04-20'
+      type:
+        description: 'Job type (job / phd / all)'
+        required: false
+        default: 'all'
+      limit:
+        description: 'Take first N per type'
+        required: false
+        default: '15'
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install anthropic python-dotenv
+
+      - name: Run diagnosis
+        run: |
+          TYPE="${{ github.event.inputs.type }}"
+          if [ "$TYPE" = "all" ]; then
+            python3 scripts/diagnose_eval.py \
+              --date "${{ github.event.inputs.date }}" \
+              --limit "${{ github.event.inputs.limit }}" \
+              | tee data/diagnose_output.txt
+          else
+            python3 scripts/diagnose_eval.py \
+              --date "${{ github.event.inputs.date }}" \
+              --type "$TYPE" \
+              --limit "${{ github.event.inputs.limit }}" \
+              | tee data/diagnose_output.txt
+          fi
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit output
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/diagnose_output.txt
+          git diff --cached --quiet || git commit -m "diag: eval diagnosis $(date +%F)"
+          git push

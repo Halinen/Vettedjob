@@ -1,0 +1,14 @@
+{
+  "id": "example_remote",
+  "type": "job",
+  "_note": "EXAMPLE — a 'remote' search, the kind most prone to ghost jobs and scams, which is exactly what the legitimacy filter is for. Edit and rename for your own use.",
+  "sources": [
+    {
+      "id": "remote_jobspy",
+      "source": "jobspy",
+      "include": ["remote data analyst"],
+      "max_results": 40
+    }
+  ],
+  "exclude": ["registration fee", "starter kit", "commission only"]
+}

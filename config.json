@@ -1,0 +1,37 @@
+{
+  "_comment": "Project config. Fork this repo, edit this file + searches/*.json + your .env, and you have your own job-search toolkit. Nothing personal is hardcoded.",
+
+  "model": "claude-sonnet-4-6",
+
+  "jobspy": {
+    "_comment": "Region for the jobspy source (Indeed + Google Jobs). Leave blank for a worldwide search.",
+    "location": "",
+    "country": "",
+    "hours_old": 168
+  },
+
+  "legitimacy": {
+    "_comment": "The 4-layer 'is this job real?' filter. Only postings that PASS are pushed.",
+    "enabled": true,
+    "fast_fail": true,
+    "stale_posting_days": 60,
+    "pass_threshold": 7.0,
+    "reject_threshold": 4.0,
+    "push_verdicts": ["pass"],
+    "layer2": {
+      "enabled": true,
+      "max_searches": 4,
+      "max_tokens": 1500
+    },
+    "layer3": {
+      "prompt": "data/prompts/legitimacy_judge.md",
+      "max_tokens": 1200
+    }
+  },
+
+  "fit_scoring": {
+    "_comment": "The original 'does this job match me?' scorer. Set enabled=false to push purely on legitimacy.",
+    "enabled": true,
+    "min_score": 6
+  }
+}

@@ -1,0 +1,12 @@
+anthropic
+httpx
+beautifulsoup4
+lxml
+python-dotenv
+python-jobspy
+streamlit
+playwright
+
+# dev / testing
+pytest
+pytest-mock

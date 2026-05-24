@@ -1,0 +1,9 @@
+{
+  "type": "job",
+  "model": "claude-sonnet-4-6",
+  "max_tokens": 4000,
+  "max_per_call": 80,
+  "profile": "data/profiles/resume_eval.md",
+  "system_prompt": "data/prompts/job_system.md",
+  "shared": "data/prompts/_shared.md"
+}

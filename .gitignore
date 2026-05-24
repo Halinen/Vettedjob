@@ -1,0 +1,15 @@
+.env
+API_key.md
+__pycache__/
+*.pyc
+*.pyo
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+.DS_Store
+# local workspaces (not version-controlled)
+jobs/
+# personal data backed up out of the template
+.personal_backup/
