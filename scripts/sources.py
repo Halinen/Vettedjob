@@ -277,12 +277,22 @@ def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int =
     except Exception:
         remote_only = False
     keywords = " ".join(include)
+    # Indeed needs a real country (it routes to that country's site); "worldwide"
+    # returns nothing. Default to "usa" when unset rather than an invalid value.
+    country_indeed = country or "usa"
+    # Google Jobs reads the region from the query text, so fold location/remote in.
+    google_term = keywords
+    if remote_only:
+        google_term = f"remote {google_term}"
+    if location:
+        google_term = f"{google_term} {location}"
     df = scrape_jobs(
         site_name=["indeed", "google"],
         search_term=keywords,
+        google_search_term=google_term,
         location=location or None,
         results_wanted=max_results,
-        country_indeed=country or "worldwide",
+        country_indeed=country_indeed,
         hours_old=hours_old,
         is_remote=remote_only or None,
     )

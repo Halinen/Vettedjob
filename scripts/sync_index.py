@@ -69,7 +69,7 @@ def _find_workspace(job_id: str) -> Path | None:
         sf = folder / "status.json"
         if sf.exists():
             try:
-                s = json.loads(sf.read_text())
+                s = json.loads(sf.read_text(encoding="utf-8"))
                 if s.get("job_id") == job_id:
                     return folder
             except Exception:

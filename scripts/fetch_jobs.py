@@ -24,12 +24,12 @@ TTL_DAYS = 30
 
 def _load_pool() -> dict:
     if POOL_PATH.exists():
-        return json.loads(POOL_PATH.read_text())
+        return json.loads(POOL_PATH.read_text(encoding="utf-8"))
     return {}
 
 
 def _save_pool(pool: dict):
-    POOL_PATH.write_text(json.dumps(pool, ensure_ascii=False, indent=2))
+    POOL_PATH.write_text(json.dumps(pool, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def _cleanup_pool(pool: dict) -> dict:
@@ -138,7 +138,7 @@ def fetch_all() -> dict:
     LAST_RUN_PATH.write_text(json.dumps(
         {"run_at": today, "searches": search_stats},
         ensure_ascii=False, indent=2
-    ))
+    ), encoding="utf-8")
 
     pending = sum(1 for j in pool.values() if not j["evaluated"])
     print(f"  Pool total: {len(pool)} (pending {pending})")

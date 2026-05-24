@@ -1,6 +1,21 @@
 {
-  "run_at": "",
-  "searches": {},
+  "run_at": "2026-05-24",
+  "searches": {
+    "remote_jobspy": {
+      "fetched": 40,
+      "after_include": 40,
+      "after_exclude": 40,
+      "after_remote": 40,
+      "new_to_pool": 40
+    },
+    "software_jobspy": {
+      "fetched": 40,
+      "after_include": 40,
+      "after_exclude": 40,
+      "after_remote": 9,
+      "new_to_pool": 9
+    }
+  },
   "evaluated_at": "2026-05-24",
   "url_join_warnings": []
 }

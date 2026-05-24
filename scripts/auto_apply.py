@@ -31,21 +31,28 @@ def apply_by_email(folder: Path, status: dict):
         print(f"  [{folder.name}] PDF not compiled, skipping")
         return
 
-    cl_body = (folder / "job_info.md").read_text()[:500]
+    cl_body = (folder / "job_info.md").read_text(encoding="utf-8")[:500]
+
+    # Applicant identity comes from env (set these in .env for your own details).
+    applicant = os.environ.get("APPLICANT_NAME", "")
+    applicant_contact = os.environ.get("APPLICANT_CONTACT", os.environ.get("EMAIL_FROM", ""))
+    sig = f"\nBest regards,\n{applicant}\n{applicant_contact}".rstrip()
+    safe_name = (applicant or "Applicant").replace(" ", "")
 
     msg = MIMEMultipart()
-    msg["Subject"] = f"Application for {status['title']} – Bo Yuan"
+    subject_name = f" – {applicant}" if applicant else ""
+    msg["Subject"] = f"Application for {status['title']}{subject_name}"
     msg["From"] = os.environ["EMAIL_FROM"]
     msg["To"] = contact
     msg.attach(MIMEText(
         f"Dear Hiring Committee,\n\n"
-        f"Please find attached my application for the position of {status['title']}.\n\n"
-        f"Best regards,\nBo Yuan\nboyua@kth.se | +46 769612787",
+        f"Please find attached my application for the position of {status['title']}.\n"
+        f"{sig}",
         "plain", "utf-8"
     ))
 
-    for pdf_path, filename in [(cl_pdf, "CoverLetter_BoYuan.pdf"),
-                                (cv_pdf, "CV_BoYuan.pdf")]:
+    for pdf_path, filename in [(cl_pdf, f"CoverLetter_{safe_name}.pdf"),
+                                (cv_pdf, f"CV_{safe_name}.pdf")]:
         with open(pdf_path, "rb") as f:
             att = MIMEApplication(f.read(), _subtype="pdf")
             att.add_header("Content-Disposition", "attachment", filename=filename)
@@ -63,7 +70,7 @@ def apply_by_email(folder: Path, status: dict):
         "note": f"Automated email submission to {contact}"
     })
     (folder / "status.json").write_text(
-        json.dumps(status, ensure_ascii=False, indent=2))
+        json.dumps(status, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  ✓ Submitted: {status['title']} → {contact}")
 
 
@@ -72,7 +79,7 @@ def run():
         sf = folder / "status.json"
         if not sf.exists():
             continue
-        status = json.loads(sf.read_text())
+        status = json.loads(sf.read_text(encoding="utf-8"))
         if (status.get("status") == "applying"
                 and status.get("application_method") == "email"):
             apply_by_email(folder, status)

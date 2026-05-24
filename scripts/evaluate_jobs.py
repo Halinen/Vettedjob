@@ -53,12 +53,12 @@ def load_evals() -> list[dict]:
 
 def _load_pool() -> dict:
     if POOL_PATH.exists():
-        return json.loads(POOL_PATH.read_text())
+        return json.loads(POOL_PATH.read_text(encoding="utf-8"))
     return {}
 
 
 def _save_pool(pool: dict):
-    POOL_PATH.write_text(json.dumps(pool, ensure_ascii=False, indent=2))
+    POOL_PATH.write_text(json.dumps(pool, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def _append_eval_log(rows: list[dict]):
@@ -288,10 +288,10 @@ def evaluate_all():
 
     run_data = {}
     if LAST_RUN_PATH.exists():
-        run_data = json.loads(LAST_RUN_PATH.read_text())
+        run_data = json.loads(LAST_RUN_PATH.read_text(encoding="utf-8"))
     run_data["evaluated_at"] = today
     run_data["url_join_warnings"] = all_join_warnings
-    LAST_RUN_PATH.write_text(json.dumps(run_data, ensure_ascii=False, indent=2))
+    LAST_RUN_PATH.write_text(json.dumps(run_data, ensure_ascii=False, indent=2), encoding="utf-8")
 
     send_email(all_matched, warnings=all_join_warnings,
                run_stats=run_data.get("searches", {}), eval_stats=eval_stats)

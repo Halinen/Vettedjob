@@ -176,7 +176,7 @@ def tab_overview():
         last_run_stats: dict = {}
         run_date = ""
         if LAST_RUN_PATH.exists():
-            last_run = json.loads(LAST_RUN_PATH.read_text())
+            last_run = json.loads(LAST_RUN_PATH.read_text(encoding="utf-8"))
             run_date = last_run.get("run_at", "")
             last_run_stats = last_run.get("searches", {})
 

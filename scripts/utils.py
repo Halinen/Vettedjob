@@ -93,7 +93,7 @@ def build_seen_ids(pool_path: str = "data/pool.json",
     seen = set()
     p = Path(pool_path)
     if p.exists():
-        seen.update(json.loads(p.read_text()).keys())
+        seen.update(json.loads(p.read_text(encoding="utf-8")).keys())
     e = Path(eval_log_path)
     if e.exists():
         with e.open(encoding="utf-8") as f:
