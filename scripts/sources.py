@@ -271,6 +271,11 @@ def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int =
     location = _jc.get("location", "")
     country = _jc.get("country", "")
     hours_old = _jc.get("hours_old", 168)  # 7 days
+    try:
+        from utils import load_config
+        remote_only = bool(load_config().get("remote_only", False))
+    except Exception:
+        remote_only = False
     keywords = " ".join(include)
     df = scrape_jobs(
         site_name=["indeed", "google"],
@@ -279,6 +284,7 @@ def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int =
         results_wanted=max_results,
         country_indeed=country or "worldwide",
         hours_old=hours_old,
+        is_remote=remote_only or None,
     )
     if df is None or df.empty:
         return [], {"fetched": 0, "after_include": 0, "after_exclude": 0}
@@ -286,12 +292,16 @@ def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int =
     jobs = []
     for _, row in df.iterrows():
         uid = str(row.get("job_url", "") or row.get("id", ""))
+        # jobspy exposes an is_remote column; carry it through so the pool/filter
+        # can trust it rather than guessing from the description text.
+        is_remote = row.get("is_remote")
         jobs.append({
             "id":          _stable_id("spy", uid),
             "title":       str(row.get("title", "")),
             "company":     str(row.get("company", "Unknown")),
             "description": str(row.get("description", ""))[:1000],
             "url":         str(row.get("job_url", "")),
+            "is_remote":   bool(is_remote) if is_remote is not None else None,
         })
 
     fetched = len(jobs)

@@ -234,6 +234,20 @@ def layer1_rules(job: dict, cfg: dict | None = None) -> tuple[list[Flag], dict]:
             source="",
         ))
 
+    # --- remote-only mismatch (only when the user requested remote-only) ----
+    if cfg.get("remote_only"):
+        try:
+            from utils import looks_remote
+            is_remote = looks_remote(job)
+        except Exception:
+            is_remote = None
+        if is_remote is False:
+            flags.append(Flag(
+                "red", "not_remote",
+                "Remote-only requested, but this posting is not a genuine remote role.",
+                source=_quote(text, 0) if text else "",
+            ))
+
     raw["flag_codes"] = [f.code for f in flags]
     return flags, raw
 
@@ -471,7 +485,7 @@ def layer4_aggregate(job_id: str, l1_flags, l3_score, l2_flags, l3_flags,
     flags = list(l1_flags) + list(l2_flags) + list(l3_flags)
     score = float(l3_score)
 
-    hard_veto_codes = {"upfront_fee", "salary_anomaly", "company_not_found"}
+    hard_veto_codes = {"upfront_fee", "salary_anomaly", "company_not_found", "not_remote"}
     has_hard_veto = any(
         f.severity == "red" and f.code in hard_veto_codes for f in flags
     )
@@ -513,7 +527,7 @@ def assess(job: dict, cfg: dict | None = None, client=None) -> LegitimacyResult:
     # Fast fail: if Layer 1 already found a hard red flag, we can skip the paid
     # network/LLM layers entirely (rules are "fast & free").
     l1_hard = any(
-        f.severity == "red" and f.code in {"upfront_fee", "salary_anomaly"}
+        f.severity == "red" and f.code in {"upfront_fee", "salary_anomaly", "not_remote"}
         for f in l1_flags
     )
     skip_paid = l1_hard and cfg.get("fast_fail", True)

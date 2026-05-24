@@ -14,7 +14,7 @@ os.chdir(Path(__file__).parent.parent)
 sys.path.insert(0, str(Path(__file__).parent))
 
 from sources import SOURCE_REGISTRY
-from utils import build_seen_ids, canonical_url
+from utils import build_seen_ids, canonical_url, load_config, looks_remote
 
 POOL_PATH         = Path("data/pool.json")
 INJECT_QUEUE_PATH = Path("data/inject_queue.json")
@@ -70,6 +70,7 @@ def fetch_all() -> dict:
     seen = build_seen_ids()
     today = date.today().isoformat()
     search_stats = {}
+    remote_only = bool(load_config().get("remote_only", False))
 
     title_seen = {
         (_normalize_title(j.get("title", "")),
@@ -95,6 +96,14 @@ def fetch_all() -> dict:
                 print(f"  [{src_id}] source failed: {e}")
                 continue
 
+            # remote-only: drop non-remote postings regardless of source
+            if remote_only:
+                before = len(jobs)
+                jobs = [j for j in jobs if looks_remote(j)]
+                stats["after_remote"] = len(jobs)
+                if before != len(jobs):
+                    print(f"  [{src_id}] remote-only: kept {len(jobs)}/{before}")
+
             new_count = 0
             for job in jobs:
                 if job["id"] in seen:
@@ -113,6 +122,7 @@ def fetch_all() -> dict:
                     "source":      src_id,
                     "fetched_at":  today,
                     "evaluated":   False,
+                    "is_remote":   job.get("is_remote"),
                 }
                 seen.add(job["id"])
                 title_seen.add(title_key)

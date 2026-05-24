@@ -102,6 +102,7 @@ cp .env.example .env
 ```jsonc
 {
   "model": "claude-sonnet-4-6",
+  "remote_only": false,           // true = only remote jobs survive (see below)
   "jobspy": { "location": "", "country": "", "hours_old": 168 },
   "legitimacy": {
     "enabled": true,
@@ -117,6 +118,11 @@ cp .env.example .env
 }
 ```
 
+- **Remote only**: set `remote_only: true`. This (1) makes the jobspy source fetch
+  remote-only, (2) drops any non-remote posting from *every* source at fetch time, and
+  (3) lets the legitimacy filter hard-veto a posting that turns out not to be a genuine
+  remote role. A source-provided remote flag is trusted; otherwise the posting text is
+  scanned (and on-site / hybrid / relocation wording disqualifies it).
 - **Legitimacy-only** (push any verified real job regardless of fit): set
   `fit_scoring.enabled = false`.
 - **Also surface ambiguous jobs**: set `push_verdicts: ["pass", "review"]`.
@@ -256,6 +262,7 @@ cp .env.example .env
 ```jsonc
 {
   "model": "claude-sonnet-4-6",
+  "remote_only": false,           // true = 只保留远程岗位（见下）
   "jobspy": { "location": "", "country": "", "hours_old": 168 },
   "legitimacy": {
     "enabled": true,
@@ -271,6 +278,7 @@ cp .env.example .env
 }
 ```
 
+- **只找远程岗位**：设 `remote_only: true`。这会（1）让 jobspy 数据源只抓远程岗，（2）在抓取阶段把**所有**数据源里的非远程岗位剔除，（3）让合法性筛选对「号称远程但其实不是」的岗位硬否决。若数据源自带远程标记则采信它，否则扫描岗位文本（出现 on-site / hybrid / 需搬迁等措辞即判为非远程）。
 - **只做合法性筛选**（凡是验证为真的岗位都推送，不看契合度）：设 `fit_scoring.enabled = false`。
 - **也想看到模糊岗位**：设 `push_verdicts: ["pass", "review"]`。
 - **`jobspy` 地区**：`location`/`country` 会传给 Indeed + Google Jobs 数据源。留空则全球搜索。

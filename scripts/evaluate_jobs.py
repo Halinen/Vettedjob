@@ -93,7 +93,10 @@ def evaluate_all():
     pool = _load_pool()
     today = date.today().isoformat()
     cfg = load_config()
-    legit_cfg = cfg.get("legitimacy", {})
+    legit_cfg = dict(cfg.get("legitimacy", {}))
+    # propagate the top-level remote_only flag into the legitimacy filter so it
+    # can hard-veto non-remote postings when the user only wants remote roles.
+    legit_cfg.setdefault("remote_only", cfg.get("remote_only", False))
     fit_cfg = cfg.get("fit_scoring", {})
     fit_enabled = fit_cfg.get("enabled", True)
     fit_min = fit_cfg.get("min_score", 6)

@@ -80,6 +80,48 @@ class TestLayer1Rules:
         assert isinstance(raw, dict)
 
 
+# ── remote-only ──────────────────────────────────────────────────────────────
+
+class TestRemoteOnly:
+    ONSITE = {
+        "id": "onsite1", "title": "Backend Engineer", "company": "Acme Corp",
+        "description": "On-site in Berlin. Relocation required.",
+    }
+    REMOTE = {
+        "id": "remote1", "title": "Backend Engineer", "company": "Acme Corp",
+        "description": "Fully remote, work from home. 3+ years Python.",
+    }
+
+    def test_looks_remote_helper(self):
+        from utils import looks_remote
+        assert looks_remote(self.REMOTE) is True
+        assert looks_remote(self.ONSITE) is False
+        # source-provided flag wins over text
+        assert looks_remote({"title": "x", "description": "no remote", "is_remote": True}) is True
+        assert looks_remote({"title": "x", "description": "fully remote", "is_remote": False}) is False
+        # hybrid without a strong remote claim is not remote
+        assert looks_remote({"title": "x", "description": "Hybrid, 2 days remote"}) is False
+
+    def test_remote_only_flags_onsite(self):
+        flags, _ = layer1_rules(self.ONSITE, {"remote_only": True})
+        assert any(f.code == "not_remote" and f.severity == "red" for f in flags)
+
+    def test_remote_only_passes_remote(self):
+        flags, _ = layer1_rules(self.REMOTE, {"remote_only": True})
+        assert not any(f.code == "not_remote" for f in flags)
+
+    def test_no_remote_flag_when_disabled(self):
+        # without remote_only, an on-site job is fine
+        flags, _ = layer1_rules(self.ONSITE, {})
+        assert not any(f.code == "not_remote" for f in flags)
+
+    def test_not_remote_is_hard_veto(self):
+        red = [Flag("red", "not_remote", "not remote", "…on-site…")]
+        r = layer4_aggregate("x", red, 9.0, [], [])
+        assert r.verdict == REJECT
+        assert r.score <= L.HARD_FLAG_SCORE_CAP
+
+
 # ── Layer 4: aggregate & threshold ───────────────────────────────────────────
 
 class TestLayer4Aggregate:

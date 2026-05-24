@@ -3,6 +3,9 @@
 
   "model": "claude-sonnet-4-6",
 
+  "remote_only": false,
+  "_remote_only_comment": "When true: only remote jobs survive. jobspy fetches remote-only; all sources are post-filtered to keep only postings whose text signals remote, and the legitimacy filter rejects misleading-remote postings harder.",
+
   "jobspy": {
     "_comment": "Region for the jobspy source (Indeed + Google Jobs). Leave blank for a worldwide search.",
     "location": "",

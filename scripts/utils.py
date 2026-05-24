@@ -51,6 +51,42 @@ def canonical_url(url: str) -> str:
 
 
 
+_REMOTE_POSITIVE = (
+    "remote", "work from home", "work-from-home", "wfh", "fully remote",
+    "100% remote", "remote-first", "telecommute", "telework", "distributed team",
+    "anywhere", "home-based", "home based",
+)
+_REMOTE_NEGATIVE = (
+    "on-site", "on site", "onsite", "in-office", "in office", "hybrid",
+    "must relocate", "relocation required", "no remote", "not remote",
+)
+
+
+def looks_remote(job: dict) -> bool:
+    """Best-effort check whether a posting is a genuine remote role.
+
+    Trusts a source-provided `is_remote` flag (e.g. from jobspy) when present;
+    otherwise scans title + description for remote signals while rejecting text
+    that explicitly says on-site/hybrid/relocation.
+    """
+    flag = job.get("is_remote")
+    if flag is True:
+        return True
+    if flag is False:
+        return False
+    text = f"{job.get('title', '')} {job.get('description', '')}".lower()
+    if not any(p in text for p in _REMOTE_POSITIVE):
+        return False
+    # A bare "hybrid"/"on-site" mention without a clear remote claim disqualifies it.
+    has_strong_remote = any(
+        p in text for p in ("fully remote", "100% remote", "remote-first",
+                            "work from home", "telecommute", "telework")
+    )
+    if not has_strong_remote and any(n in text for n in _REMOTE_NEGATIVE):
+        return False
+    return True
+
+
 def build_seen_ids(pool_path: str = "data/pool.json",
                    eval_log_path: str = "data/eval_log.csv") -> set:
     """Derive the dedup set at runtime: all IDs in the pool + all IDs in eval_log."""
