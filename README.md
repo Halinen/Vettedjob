@@ -88,6 +88,30 @@ cp .env.example .env
 5. **Deploy** — add the secrets below and let
    [.github/workflows/daily_jobs.yml](.github/workflows/daily_jobs.yml) run it daily.
 
+### Web app
+
+The repo also includes a lightweight FastAPI web app for interactive checks:
+
+```bash
+pip install -r requirements.txt
+uvicorn web.app:app --reload --port 8000
+```
+
+Open <http://localhost:8000>. The web app supports:
+
+- **Check**: paste one job posting and run the explainable legitimacy filter.
+- **Fetch**: run a small `jobspy` search, then assess the returned jobs.
+- **Resume**: upload or paste a temporary resume for fit scoring during fetch.
+
+Docker:
+
+```bash
+docker build -t vettedjob .
+docker run -p 8000:8000 -e ANTHROPIC_API_KEY=sk-ant-... vettedjob
+```
+
+Temporary resume uploads are written to `web/_tmp_resumes/` and are ignored by git.
+
 **GitHub Actions secrets** (Settings → Secrets → Actions):
 
 | Secret | Value |

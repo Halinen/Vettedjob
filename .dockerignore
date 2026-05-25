@@ -1,0 +1,14 @@
+.git
+.env
+.personal_backup/
+__pycache__/
+*.pyc
+*.pyo
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+.pytest_cache/
+jobs/
+web/_tmp_resumes/

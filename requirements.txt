@@ -6,6 +6,10 @@ python-dotenv
 python-jobspy
 streamlit
 playwright
+fastapi
+uvicorn[standard]
+python-multipart
+pypdf
 
 # dev / testing
 pytest

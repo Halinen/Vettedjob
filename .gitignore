@@ -13,3 +13,5 @@ __pycache__/
 jobs/
 # personal data backed up out of the template
 .personal_backup/
+# temporary web-app resume uploads
+web/_tmp_resumes/

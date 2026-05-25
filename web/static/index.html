@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Job Search Command Center</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Job Search Command Center</h1>
+        <p id="health">Checking service...</p>
+      </div>
+      <div class="status-pill" id="apiKey">API key</div>
+    </header>
+
+    <main>
+      <section class="quickstart">
+        <div>
+          <strong>How to run locally</strong>
+          <code>pip install -r requirements.txt</code>
+          <code>py -3 -m uvicorn web.app:app --host 127.0.0.1 --port 8000</code>
+        </div>
+        <p>
+          Start with the free scam example in Check. It fast-fails on local rules and
+          does not need paid web search or judge calls.
+        </p>
+      </section>
+
+      <nav class="tabs" aria-label="Sections">
+        <button class="tab active" data-tab="check">Check</button>
+        <button class="tab" data-tab="fetch">Fetch</button>
+        <button class="tab" data-tab="resume">Resume</button>
+      </nav>
+
+      <section class="panel active" id="check">
+        <div class="section-head">
+          <h2>Single Job Check</h2>
+          <span>Paste a posting and get an explainable legitimacy verdict.</span>
+        </div>
+        <div class="hint">
+          <strong>Best demo path:</strong> click "Load scam example", then "Run check".
+          This demonstrates the no-cost Layer-1 fast fail. Real-looking jobs may use
+          API calls for external verification and LLM judging.
+        </div>
+        <div class="preset-row" aria-label="Example jobs">
+          <button type="button" class="secondary" data-example="scam">Load scam example</button>
+          <button type="button" class="secondary" data-example="fakeRemote">Load fake-remote example</button>
+          <button type="button" class="secondary" data-example="legit">Load plausible real job</button>
+        </div>
+        <form id="checkForm" class="grid-form">
+          <label>Title <input name="title" required placeholder="Remote Data Entry Assistant" /></label>
+          <label>Company <input name="company" placeholder="Company name, if listed" /></label>
+          <label>Posting URL <input name="url" type="url" placeholder="https://..." /></label>
+          <label>Contact email <input name="contact_email" type="email" placeholder="recruiter@company.com" /></label>
+          <label class="wide">Location
+            <select name="location">
+              <option value="">Not specified</option>
+              <option>Remote</option>
+              <option>United States</option>
+              <option>Canada</option>
+              <option>Toronto, Canada</option>
+              <option>New York, United States</option>
+              <option>San Francisco, United States</option>
+              <option>London, United Kingdom</option>
+              <option>Berlin, Germany</option>
+            </select>
+          </label>
+          <label class="wide">Description <textarea name="description" rows="10" required placeholder="Paste the full posting text here."></textarea></label>
+          <div class="actions wide">
+            <button type="submit">Run check</button>
+            <span id="checkStatus"></span>
+          </div>
+        </form>
+        <div id="checkResult" class="result"></div>
+      </section>
+
+      <section class="panel" id="fetch">
+        <div class="section-head">
+          <h2>Fetch And Filter</h2>
+          <span>Run a small jobspy search, then assess each result.</span>
+        </div>
+        <div class="hint">
+          Fetch uses live job search plus one legitimacy assessment per returned job.
+          Keep the result count low for hackathon demos. Upload a resume first only if
+          you want fit scoring in addition to legitimacy.
+        </div>
+        <form id="fetchForm" class="grid-form">
+          <label class="wide">Keywords
+            <input name="keywords" list="searchPresets" required placeholder="Type any role, or choose a suggestion" />
+            <datalist id="searchPresets">
+              <option value="python backend developer"></option>
+              <option value="software engineer remote"></option>
+              <option value="data analyst remote"></option>
+              <option value="machine learning engineer"></option>
+              <option value="product manager remote"></option>
+              <option value="frontend engineer react"></option>
+              <option value="devops engineer kubernetes"></option>
+              <option value="cybersecurity analyst"></option>
+              <option value="hardware engineer"></option>
+              <option value="research engineer"></option>
+            </datalist>
+          </label>
+          <label>Exclude terms <input name="exclude" placeholder="internship, unpaid" /></label>
+          <label>Country
+            <select name="country">
+              <option value="usa">United States</option>
+              <option value="canada">Canada</option>
+              <option value="uk">United Kingdom</option>
+              <option value="germany">Germany</option>
+              <option value="sweden">Sweden</option>
+              <option value="france">France</option>
+              <option value="australia">Australia</option>
+            </select>
+          </label>
+          <label>Location
+            <input name="location" list="locationPresets" placeholder="Any / remote-friendly" />
+            <datalist id="locationPresets">
+              <option value="Toronto"></option>
+              <option value="Vancouver"></option>
+              <option value="New York"></option>
+              <option value="San Francisco"></option>
+              <option value="London"></option>
+              <option value="Berlin"></option>
+              <option value="Stockholm"></option>
+              <option value="Remote"></option>
+            </datalist>
+          </label>
+          <label>Max results
+            <select name="max_results">
+              <option value="2">2 - safest demo</option>
+              <option value="5" selected>5 - recommended</option>
+              <option value="10">10</option>
+              <option value="15">15 - max</option>
+            </select>
+          </label>
+          <label class="checkline"><input name="remote_only" type="checkbox" /> Remote only</label>
+          <label class="checkline"><input name="fit_scoring" type="checkbox" /> Use uploaded resume for fit score</label>
+          <div class="actions wide">
+            <button type="submit">Start fetch</button>
+            <span id="fetchStatus"></span>
+          </div>
+        </form>
+        <div id="fetchProgress" class="progress"></div>
+        <div id="fetchResult" class="result"></div>
+      </section>
+
+      <section class="panel" id="resume">
+        <div class="section-head">
+          <h2>Resume</h2>
+          <span>Upload or paste a temporary resume for fit scoring.</span>
+        </div>
+        <div class="hint">
+          This resume is temporary and only used for web-session fit scoring. It does
+          not overwrite <code>data/profiles/resume_eval.md</code>.
+        </div>
+        <form id="resumeForm" class="grid-form">
+          <label class="wide">Paste resume text <textarea name="text" rows="12" placeholder="Paste a short resume or profile summary for demo fit scoring."></textarea></label>
+          <label class="wide">Or upload .txt, .md, .pdf <input name="file" type="file" accept=".txt,.md,.pdf" /></label>
+          <div class="actions wide">
+            <button type="submit">Save temporary resume</button>
+            <span id="resumeStatus"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
