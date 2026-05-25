@@ -112,6 +112,21 @@ docker run -p 8000:8000 -e ANTHROPIC_API_KEY=sk-ant-... vettedjob
 
 Temporary resume uploads are written to `web/_tmp_resumes/` and are ignored by git.
 
+#### Deploying
+
+Deploy to a host that runs a **long-lived process** (Render, Railway, Fly.io, or any
+Docker host). `/api/fetch` uses an in-memory background task + polling and writes a
+temp resume file, so it does **not** work on serverless platforms like Vercel —
+serverless instances are stateless and time-limited, and `jobspy` scraping often
+exceeds their function timeout.
+
+**Render (one-click):** the repo ships a [`render.yaml`](render.yaml) blueprint. In
+Render: *New + → Blueprint → connect this repo*. Render builds the Dockerfile and
+prompts for `ANTHROPIC_API_KEY`. The container honors Render's injected `$PORT`.
+
+The single-job **Check** endpoint has no long-running or filesystem needs and would
+work anywhere; only **Fetch**/**Resume** require the long-lived host.
+
 **GitHub Actions secrets** (Settings → Secrets → Actions):
 
 | Secret | Value |

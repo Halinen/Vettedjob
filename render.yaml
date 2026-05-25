@@ -1,0 +1,18 @@
+# Render blueprint — deploy the FastAPI web app from the Dockerfile.
+# In Render: New + → Blueprint → connect this repo. Render reads this file,
+# builds the Docker image, and prompts you for ANTHROPIC_API_KEY.
+services:
+  - type: web
+    name: vettedjob
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Set at deploy time in the Render dashboard; never committed.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: WEB_MAX_FETCH
+        value: "15"
+      # Render injects PORT automatically; the Dockerfile honors it.
