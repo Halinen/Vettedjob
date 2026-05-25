@@ -4,8 +4,8 @@ import hashlib
 import json
 import os
 import sys
-import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from io import BytesIO
 from pathlib import Path
 from threading import Lock
@@ -31,6 +31,10 @@ RESUME_TMP_DIR = WEB_ROOT / "_tmp_resumes"
 RESUME_TMP_DIR.mkdir(parents=True, exist_ok=True)
 
 WEB_MAX_FETCH = int(os.environ.get("WEB_MAX_FETCH", "15"))
+# How many jobs to legitimacy-assess in parallel. Each assess() makes blocking
+# Claude calls (Layer 2 web search is the slow part), so threads overlap the waits.
+# Kept modest to avoid Anthropic rate limits.
+WEB_ASSESS_CONCURRENCY = int(os.environ.get("WEB_ASSESS_CONCURRENCY", "5"))
 TASKS: dict[str, dict[str, Any]] = {}
 RESUME_TMP: dict[str, str] = {}
 FETCH_LOCK = Lock()
@@ -55,6 +59,7 @@ class FetchRequest(BaseModel):
     location: str = Field(default="", max_length=120)
     remote_only: bool = False
     max_results: int = Field(default=10, ge=1, le=100)
+    verification_mode: str = Field(default="fast", pattern="^(fast|full)$")
     fit_scoring: bool = False
     resume_token: str | None = None
 
@@ -142,15 +147,27 @@ def run_fetch_task(task_id: str, req: FetchRequest):
         if req.fit_scoring:
             fit_by_url = _score_fit(task_id, req, jobs)
 
-        results = []
         total = len(jobs)
-        for idx, job in enumerate(jobs, start=1):
-            _set_progress(task_id, "assessing", idx - 1, total)
-            legit = legitimacy.assess(job, cfg=_legit_cfg())
+        results: list[Any] = [None] * total
+        cfg = _legit_cfg()
+        _set_progress(task_id, "assessing", 0, total)
+
+        def _assess_one(i: int, job: dict[str, Any]):
+            # assess() is self-throttling internally only in assess_batch; here each
+            # job runs independently in its own thread, no inter-job sleep needed.
+            legit = _assess_for_mode(job, cfg, req.verification_mode)
             fit = fit_by_url.get(canonical_url(job.get("url", "")))
-            results.append(_result_row(job, legit, fit))
-            if idx < total:
-                time.sleep(1)
+            return i, _result_row(job, legit, fit)
+
+        done = 0
+        workers = max(1, min(WEB_ASSESS_CONCURRENCY, total))
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = [pool.submit(_assess_one, i, job) for i, job in enumerate(jobs)]
+            for fut in as_completed(futures):
+                i, row = fut.result()
+                results[i] = row
+                done += 1
+                _set_progress(task_id, "assessing", done, total)
 
         _set_progress(task_id, "done", total, total)
         TASKS[task_id]["status"] = "done"
@@ -229,6 +246,34 @@ def _score_fit(task_id: str, req: FetchRequest, jobs: list[dict[str, Any]]):
             "matched": score >= fit_min,
         }
     return fit_by_url
+
+
+def _assess_for_mode(job: dict[str, Any], cfg: dict[str, Any], mode: str):
+    if mode == "full":
+        return legitimacy.assess(job, cfg=cfg)
+
+    l1_flags, l1_raw = legitimacy.layer1_rules(job, cfg)
+    hard_veto_codes = {"upfront_fee", "salary_anomaly", "not_remote"}
+    has_hard_veto = any(
+        flag.severity == "red" and flag.code in hard_veto_codes for flag in l1_flags
+    )
+    score = legitimacy.HARD_FLAG_SCORE_CAP if has_hard_veto else 6.0
+    # Fast mode intentionally avoids claiming a verified PASS. Clean-looking jobs
+    # stay REVIEW until the user opts into full web/LLM verification.
+    result = legitimacy.layer4_aggregate(
+        job.get("id", ""),
+        l1_flags,
+        score,
+        [],
+        [],
+        cfg={**cfg, "pass_threshold": 99},
+    )
+    result.layers = {
+        "layer1": l1_raw,
+        "layer2": {"skipped": "fast_fetch_mode"},
+        "layer3": {"skipped": "fast_fetch_mode"},
+    }
+    return result
 
 
 def _result_row(job: dict[str, Any], legit, fit: dict[str, Any] | None):

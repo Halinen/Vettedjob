@@ -109,6 +109,7 @@ $("#fetchForm").addEventListener("submit", async (event) => {
     location: form.get("location") || "",
     remote_only: form.get("remote_only") === "on",
     max_results: Number(form.get("max_results") || 10),
+    verification_mode: form.get("verification_mode") || "fast",
     fit_scoring: form.get("fit_scoring") === "on",
     resume_token: state.resumeToken,
   };

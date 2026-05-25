@@ -286,16 +286,18 @@ def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int =
         google_term = f"remote {google_term}"
     if location:
         google_term = f"{google_term} {location}"
-    df = scrape_jobs(
-        site_name=["indeed", "google"],
-        search_term=keywords,
-        google_search_term=google_term,
-        location=location or None,
-        results_wanted=max_results,
-        country_indeed=country_indeed,
-        hours_old=hours_old,
-        is_remote=remote_only or None,
-    )
+    scrape_kwargs = {
+        "site_name": ["indeed", "google"],
+        "search_term": keywords,
+        "google_search_term": google_term,
+        "location": location or None,
+        "results_wanted": max_results,
+        "country_indeed": country_indeed,
+        "hours_old": hours_old,
+    }
+    if remote_only:
+        scrape_kwargs["is_remote"] = True
+    df = scrape_jobs(**scrape_kwargs)
     if df is None or df.empty:
         return [], {"fetched": 0, "after_include": 0, "after_exclude": 0}
 

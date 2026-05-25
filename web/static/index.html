@@ -82,9 +82,9 @@
           <span>Run a small jobspy search, then assess each result.</span>
         </div>
         <div class="hint">
-          Fetch uses live job search plus one legitimacy assessment per returned job.
-          Keep the result count low for hackathon demos. Upload a resume first only if
-          you want fit scoring in addition to legitimacy.
+          Fetch defaults to fast local rules so demos complete quickly. Switch to
+          full verification only when you want web search + LLM judging for each
+          returned job. Upload a resume first only if you want fit scoring too.
         </div>
         <form id="fetchForm" class="grid-form">
           <label class="wide">Keywords
@@ -133,6 +133,12 @@
               <option value="5" selected>5 - recommended</option>
               <option value="10">10</option>
               <option value="15">15 - max</option>
+            </select>
+          </label>
+          <label>Verification depth
+            <select name="verification_mode">
+              <option value="fast" selected>Fast rules only - free</option>
+              <option value="full">Full verification - slower</option>
             </select>
           </label>
           <label class="checkline"><input name="remote_only" type="checkbox" /> Remote only</label>
