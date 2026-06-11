@@ -9,6 +9,9 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+permissions:
+  contents: write
+
 jobs:
   search:
     runs-on: ubuntu-latest
@@ -47,6 +50,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/pool.json data/eval_log.csv data/last_run.json
-          git add jobs_index.csv dashboard.md || true
+          test -f jobs_index.csv && git add jobs_index.csv || true
+          test -f dashboard.md && git add dashboard.md || true
           git diff --cached --quiet || git commit -m "chore: daily job sync $(date +%F)"
           git push
