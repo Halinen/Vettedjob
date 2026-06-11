@@ -5,48 +5,80 @@
       "fetched": 0,
       "after_include": 0,
       "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
       "new_to_pool": 0
     },
     "quant_research_intern_toronto": {
       "fetched": 0,
       "after_include": 0,
       "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
       "new_to_pool": 0
     },
     "quant_dev_cpp_toronto": {
       "fetched": 0,
       "after_include": 0,
       "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
       "new_to_pool": 0
     },
     "trading_systems_intern_toronto": {
       "fetched": 0,
       "after_include": 0,
       "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
       "new_to_pool": 0
     },
     "system_mle_toronto": {
       "fetched": 1,
       "after_include": 1,
-      "after_exclude": 1,
-      "new_to_pool": 1
+      "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
+      "new_to_pool": 0
     },
     "ai_software_cpp_toronto": {
       "fetched": 0,
       "after_include": 0,
       "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
       "new_to_pool": 0
     },
     "ml_systems_toronto": {
       "fetched": 1,
       "after_include": 1,
       "after_exclude": 1,
-      "new_to_pool": 1
+      "after_location": 1,
+      "after_reject_location": 1,
+      "after_required_terms": 1,
+      "after_post_exclude": 1,
+      "new_to_pool": 0
     },
     "ml_compiler_toronto": {
       "fetched": 1,
       "after_include": 1,
-      "after_exclude": 1,
+      "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
       "new_to_pool": 0
     }
   },
