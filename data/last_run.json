@@ -1,21 +1,55 @@
 {
-  "run_at": "2026-05-24",
+  "run_at": "2026-06-11",
   "searches": {
-    "remote_jobspy": {
-      "fetched": 40,
-      "after_include": 40,
-      "after_exclude": 40,
-      "after_remote": 40,
-      "new_to_pool": 40
+    "quant_dev_intern_toronto": {
+      "fetched": 0,
+      "after_include": 0,
+      "after_exclude": 0,
+      "new_to_pool": 0
     },
-    "software_jobspy": {
-      "fetched": 40,
-      "after_include": 40,
-      "after_exclude": 40,
-      "after_remote": 9,
-      "new_to_pool": 9
+    "quant_research_intern_toronto": {
+      "fetched": 0,
+      "after_include": 0,
+      "after_exclude": 0,
+      "new_to_pool": 0
+    },
+    "quant_dev_cpp_toronto": {
+      "fetched": 0,
+      "after_include": 0,
+      "after_exclude": 0,
+      "new_to_pool": 0
+    },
+    "trading_systems_intern_toronto": {
+      "fetched": 0,
+      "after_include": 0,
+      "after_exclude": 0,
+      "new_to_pool": 0
+    },
+    "system_mle_toronto": {
+      "fetched": 1,
+      "after_include": 1,
+      "after_exclude": 1,
+      "new_to_pool": 1
+    },
+    "ai_software_cpp_toronto": {
+      "fetched": 0,
+      "after_include": 0,
+      "after_exclude": 0,
+      "new_to_pool": 0
+    },
+    "ml_systems_toronto": {
+      "fetched": 1,
+      "after_include": 1,
+      "after_exclude": 1,
+      "new_to_pool": 1
+    },
+    "ml_compiler_toronto": {
+      "fetched": 1,
+      "after_include": 1,
+      "after_exclude": 1,
+      "new_to_pool": 0
     }
   },
-  "evaluated_at": "2026-05-24",
+  "evaluated_at": "2026-06-11",
   "url_join_warnings": []
 }
