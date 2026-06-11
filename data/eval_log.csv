@@ -1,1 +1,2 @@
 id,evaluated_at,direction,source,title,company,location,url,contact_email,score,score_source,matched,visa_ok,visa_note,reason,research_fit,deadline,application_method,security_flag,security_note,legit_verdict,legit_score,legit_red_flags,legit_green_flags
+spy_6148db12f7a0,2026-06-11,job,ml_systems_toronto,DL System Software Engineer - AI Platform,NVIDIA,"Toronto, ON, CA",https://ca.indeed.com/viewjob?jk=7efa334df914dddc,,,claude,False,,,,,,,False,,,,,
