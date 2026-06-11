@@ -189,8 +189,8 @@ def send_email(all_matched: dict[str, list[dict]],
         for jtype, s in eval_stats.items():
             body += (f"  {jtype:8s}  pending {s.get('pending', 0):3d}  ->  "
                      f"evaluated {s.get('evaluated', 0):3d}  ->  "
-                     f"fit-matched {s.get('fit_matched', 0):2d}  ->  "
-                     f"verified & pushed {s.get('pushed', 0):2d}\n")
+                     f"matched {s.get('fit_matched', 0):2d}  ->  "
+                     f"pushed {s.get('pushed', 0):2d}\n")
     body += "\n"
 
     if run_stats:
@@ -213,9 +213,9 @@ def send_email(all_matched: dict[str, list[dict]],
 
     # ── verified job list ─────────────────────────────────
     if total == 0:
-        body += "No verified jobs to recommend today.\n"
+        body += "No new jobs to recommend today.\n"
     else:
-        body += f"{total} verified job(s) today (passed the legitimacy filter):\n\n"
+        body += f"{total} new job(s) today:\n\n"
         for direction, jobs in all_matched.items():
             if not jobs:
                 continue
@@ -225,7 +225,7 @@ def send_email(all_matched: dict[str, list[dict]],
                 legit = job.get("legit_verdict", "")
                 lscore = job.get("legit_score", "")
                 fit = job.get("score", "?")
-                header = f"[fit {fit}/10]"
+                header = f"[fit {fit}/10]" if fit not in ("", None) else "[unscored]"
                 if legit:
                     header += f" [legit {legit.upper()} {lscore}/10]"
                 body += f"{header} {job.get('title', '')} @ {company}\n"
@@ -242,8 +242,8 @@ def send_email(all_matched: dict[str, list[dict]],
                 body += f"  {job.get('url', '')}\n\n"
 
     today = date.today()
-    subject = (f"[Job filter] {total} verified job(s) ({today})"
-               if total > 0 else f"[Job filter] no verified jobs ({today})")
+    subject = (f"[Job filter] {total} new job(s) ({today})"
+               if total > 0 else f"[Job filter] no new jobs ({today})")
     msg = MIMEText(body, "plain", "utf-8")
     msg["Subject"] = subject
     msg["From"] = os.environ["EMAIL_FROM"]

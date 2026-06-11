@@ -101,6 +101,10 @@ def evaluate_all():
     fit_enabled = fit_cfg.get("enabled", True)
     fit_min = fit_cfg.get("min_score", 6)
     legit_enabled = legit_cfg.get("enabled", True)
+    if os.environ.get("JOB_FILTER_DISABLE_CLAUDE") == "1":
+        fit_enabled = False
+        legit_enabled = False
+        print("  Claude scoring/verification disabled by JOB_FILTER_DISABLE_CLAUDE=1")
     push_verdicts = set(legit_cfg.get("push_verdicts", ["pass"]))
 
     all_matched: dict[str, list[dict]] = {}
