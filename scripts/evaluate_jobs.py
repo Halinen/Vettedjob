@@ -258,7 +258,7 @@ def evaluate_all():
         n_eval = len(evaluated) + len(manual_scored)
         eval_stats[job_type]["evaluated"] = n_eval
         eval_stats[job_type]["fit_matched"] = len(matched) + len(manual_scored)
-        print(f"  fit-scored {len(evaluated)}, fit-matched {len(matched)}")
+        print(f"  evaluated {len(evaluated)}, fit-matched {len(matched)}")
 
         if auto_pending and fit_enabled:
             time.sleep(15)
