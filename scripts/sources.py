@@ -313,6 +313,7 @@ def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int =
             "id":          _stable_id("spy", uid),
             "title":       str(row.get("title", "")),
             "company":     str(row.get("company", "Unknown")),
+            "location":    str(row.get("location", "") or row.get("job_location", "") or ""),
             "description": str(row.get("description", ""))[:1000],
             "url":         str(row.get("job_url", "")),
             "is_remote":   bool(is_remote) if is_remote is not None else None,

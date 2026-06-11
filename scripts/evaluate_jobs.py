@@ -213,7 +213,7 @@ def evaluate_all():
                     "source":             job.get("source", ""),
                     "title":              job.get("title", ""),
                     "company":            job.get("company", ""),
-                    "location":           claude_result.get("location", "") if claude_result else "",
+                    "location":           claude_result.get("location", "") if claude_result else job.get("location", ""),
                     "url":                job.get("url", ""),
                     "contact_email":      claude_result.get("contact_email", "") if claude_result else "",
                     "score":              claude_result.get("score", "") if claude_result else "",
@@ -239,7 +239,7 @@ def evaluate_all():
                     legit_candidates.append((job_type, job, {
                         "title":              job.get("title", ""),
                         "company":            job.get("company", ""),
-                        "location":           cr.get("location", ""),
+                        "location":           cr.get("location", "") or job.get("location", ""),
                         "url":                job.get("url", ""),
                         "contact_email":      cr.get("contact_email", ""),
                         "score":              cr.get("score", ""),

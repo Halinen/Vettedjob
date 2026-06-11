@@ -56,6 +56,79 @@ def _normalize_title(t: str) -> str:
     return _re.sub(r'\s+', ' ', t.lower().strip())
 
 
+def _job_text(job: dict) -> str:
+    return " ".join(str(job.get(k, "") or "") for k in (
+        "title", "company", "location", "description", "url"
+    )).lower()
+
+
+def _match_any(text: str, terms: list[str]) -> bool:
+    text = text.lower()
+    return any(str(term).lower() in text for term in terms)
+
+
+def _merged_list(search: dict, src_cfg: dict, key: str) -> list[str]:
+    return list(search.get(key, [])) + list(src_cfg.get(key, []))
+
+
+def _apply_post_filters(jobs: list[dict], search: dict, src_cfg: dict, stats: dict) -> list[dict]:
+    """Apply local hard filters after a source returns results.
+
+    Job boards treat location/search terms as hints. These filters are the local
+    contract: only jobs matching the user's target geography and direction enter
+    the pool.
+    """
+    require_location_terms = _merged_list(search, src_cfg, "require_location_terms")
+    reject_location_terms = _merged_list(search, src_cfg, "reject_location_terms")
+    require_any_terms = _merged_list(search, src_cfg, "require_any_terms")
+    exclude_terms = _merged_list(search, src_cfg, "exclude")
+
+    kept = jobs
+    if require_location_terms:
+        kept = [j for j in kept if _match_any(_job_text(j), require_location_terms)]
+        stats["after_location"] = len(kept)
+    if reject_location_terms:
+        kept = [j for j in kept if not _match_any(_job_text(j), reject_location_terms)]
+        stats["after_reject_location"] = len(kept)
+    if require_any_terms:
+        kept = [j for j in kept if _match_any(_job_text(j), require_any_terms)]
+        stats["after_required_terms"] = len(kept)
+    if exclude_terms:
+        kept = [j for j in kept if not _match_any(_job_text(j), exclude_terms)]
+        stats["after_post_exclude"] = len(kept)
+    return kept
+
+
+def _matches_search_filters(job: dict, search: dict) -> bool:
+    stats = {}
+    return bool(_apply_post_filters([job], search, {}, stats))
+
+
+def _cleanup_nonmatching_pending(pool: dict, searches: list[dict]) -> dict:
+    to_delete = []
+    filtered_searches = [
+        s for s in searches
+        if any(s.get(k) for k in ("require_location_terms", "reject_location_terms",
+                                  "require_any_terms", "exclude"))
+    ]
+    if not filtered_searches:
+        return pool
+
+    for job_id, job in pool.items():
+        if job.get("evaluated") or job.get("source") == "manual":
+            continue
+        job_type = job.get("type") or "job"
+        candidate_searches = [s for s in filtered_searches if s.get("type") == job_type]
+        if candidate_searches and not any(_matches_search_filters(job, s) for s in candidate_searches):
+            to_delete.append(job_id)
+
+    for job_id in to_delete:
+        del pool[job_id]
+    if to_delete:
+        print(f"  cleaned up nonmatching pending entries: {len(to_delete)}")
+    return pool
+
+
 def load_searches() -> list[dict]:
     search_dir = Path("searches")
     return [
@@ -71,6 +144,7 @@ def fetch_all() -> dict:
     today = date.today().isoformat()
     search_stats = {}
     remote_only = bool(load_config().get("remote_only", False))
+    searches = load_searches()
 
     title_seen = {
         (_normalize_title(j.get("title", "")),
@@ -79,7 +153,7 @@ def fetch_all() -> dict:
         for j in pool.values()
     }
 
-    for search in load_searches():
+    for search in searches:
         job_type = search["type"]
         for src_cfg in search["sources"]:
             src_id = src_cfg["id"]
@@ -107,6 +181,8 @@ def fetch_all() -> dict:
                 if before != len(jobs):
                     print(f"  [{src_id}] remote-only: kept {len(jobs)}/{before}")
 
+            jobs = _apply_post_filters(jobs, search, src_cfg, stats)
+
             new_count = 0
             for job in jobs:
                 if job["id"] in seen:
@@ -119,6 +195,7 @@ def fetch_all() -> dict:
                 pool[job["id"]] = {
                     "title":       job.get("title", ""),
                     "company":     job.get("company", ""),
+                    "location":    job.get("location", ""),
                     "url":         job.get("url", ""),
                     "description": job.get("description", ""),
                     "type":        job_type,
@@ -132,9 +209,15 @@ def fetch_all() -> dict:
                 new_count += 1
 
             search_stats[src_id] = {**stats, "new_to_pool": new_count}
-            print(f"  [{src_id}] fetched {stats['fetched']} after-include {stats['after_include']} after-exclude {stats['after_exclude']} new-to-pool {new_count}")
+            post_bits = []
+            for key in ("after_location", "after_reject_location", "after_required_terms", "after_post_exclude"):
+                if key in stats:
+                    post_bits.append(f"{key.replace('after_', 'after-')} {stats[key]}")
+            post_summary = " " + " ".join(post_bits) if post_bits else ""
+            print(f"  [{src_id}] fetched {stats['fetched']} after-include {stats['after_include']} after-exclude {stats['after_exclude']}{post_summary} new-to-pool {new_count}")
 
     pool = _process_inject_queue(pool, seen)
+    pool = _cleanup_nonmatching_pending(pool, searches)
     pool = _cleanup_pool(pool)
     _save_pool(pool)
 
