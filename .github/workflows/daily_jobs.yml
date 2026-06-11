@@ -33,8 +33,8 @@ jobs:
             data/pool.json
             data/eval_log.csv
             data/last_run.json
-          key: job-state-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: job-state-${{ runner.os }}-
+          key: job-state-toronto-v2-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: job-state-toronto-v2-${{ runner.os }}-
 
       - name: Run
         working-directory: .
