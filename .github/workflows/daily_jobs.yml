@@ -2,7 +2,8 @@ name: Daily Job Search
 
 on:
   schedule:
-    - cron: '0 6 * * 1-5'
+    # 13:00 UTC is 9am in Toronto during daylight saving time.
+    - cron: '0 13 * * *'
   workflow_dispatch:
 
 env:

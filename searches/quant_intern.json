@@ -1,0 +1,54 @@
+{
+  "id": "quant_intern",
+  "type": "job",
+  "_note": "Toronto-based quant dev / quant research internship searches, prioritizing C++, ML, trading systems, and performance-sensitive engineering.",
+  "sources": [
+    {
+      "id": "quant_dev_intern_toronto",
+      "source": "jobspy",
+      "include": ["quantitative developer intern C++"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    },
+    {
+      "id": "quant_research_intern_toronto",
+      "source": "jobspy",
+      "include": ["quantitative researcher intern machine learning"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    },
+    {
+      "id": "quant_dev_cpp_toronto",
+      "source": "jobspy",
+      "include": ["quant developer intern C++ trading systems"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    },
+    {
+      "id": "trading_systems_intern_toronto",
+      "source": "jobspy",
+      "include": ["trading systems developer intern C++"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    }
+  ],
+  "exclude": [
+    "unpaid",
+    "commission only",
+    "sales",
+    "marketing",
+    "financial advisor",
+    "insurance",
+    "campus ambassador",
+    "forex",
+    "crypto promoter",
+    "senior",
+    "principal",
+    "staff",
+    "manager"
+  ]
+}

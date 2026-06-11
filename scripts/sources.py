@@ -255,7 +255,9 @@ def fetch_af_jobs(include: list[str], exclude: list[str] = [], max_results: int 
     return jobs, stats
 
 
-def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int = 20) -> tuple[list[dict], dict]:
+def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int = 20,
+                 country: str | None = None, location: str | None = None,
+                 hours_old: int | None = None) -> tuple[list[dict], dict]:
     """JobSpy — aggregates Indeed + Google Jobs. `include` is joined into a query.
 
     Location/country come from config.json -> jobspy {location, country}, so this
@@ -268,9 +270,9 @@ def fetch_jobspy(include: list[str], exclude: list[str] = [], max_results: int =
         _jc = load_config().get("jobspy", {})
     except Exception:
         _jc = {}
-    location = _jc.get("location", "")
-    country = _jc.get("country", "")
-    hours_old = _jc.get("hours_old", 168)  # 7 days
+    location = location if location is not None else _jc.get("location", "")
+    country = country if country is not None else _jc.get("country", "")
+    hours_old = hours_old if hours_old is not None else _jc.get("hours_old", 168)  # 7 days
     try:
         from utils import load_config
         remote_only = bool(load_config().get("remote_only", False))

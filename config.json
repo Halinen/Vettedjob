@@ -3,12 +3,12 @@
 
   "model": "claude-sonnet-4-6",
 
-  "remote_only": true,
+  "remote_only": false,
   "_remote_only_comment": "When true: only remote jobs survive. jobspy fetches remote-only; all sources are post-filtered to keep only postings whose text signals remote, and the legitimacy filter rejects misleading-remote postings harder.",
 
   "jobspy": {
     "_comment": "Region for the jobspy source. `country` is REQUIRED for Indeed (it routes to that country's Indeed site) — use a country name like usa/uk/canada/sweden. `location` is an optional city/region within it.",
-    "location": "",
+    "location": "Toronto, ON",
     "country": "canada",
     "hours_old": 168
   },

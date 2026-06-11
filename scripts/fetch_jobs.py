@@ -89,6 +89,9 @@ def fetch_all() -> dict:
             kwargs = {"include": inc, "exclude": exc}
             if "max_results" in src_cfg:
                 kwargs["max_results"] = src_cfg["max_results"]
+            for opt in ("country", "location", "hours_old"):
+                if opt in src_cfg:
+                    kwargs[opt] = src_cfg[opt]
 
             try:
                 jobs, stats = fn(**kwargs)

@@ -1,0 +1,49 @@
+{
+  "id": "system_mle_ai_software",
+  "type": "job",
+  "_note": "Toronto-based C++ + Machine Learning + Performance Optimization roles: systems MLE, AI software engineer, inference/runtime/compiler/performance engineering.",
+  "sources": [
+    {
+      "id": "system_mle_toronto",
+      "source": "jobspy",
+      "include": ["C++ machine learning engineer performance optimization"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    },
+    {
+      "id": "ai_software_cpp_toronto",
+      "source": "jobspy",
+      "include": ["AI software engineer C++ inference optimization"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    },
+    {
+      "id": "ml_systems_toronto",
+      "source": "jobspy",
+      "include": ["ML systems engineer C++ CUDA"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    },
+    {
+      "id": "ml_compiler_toronto",
+      "source": "jobspy",
+      "include": ["machine learning compiler engineer C++ performance"],
+      "country": "canada",
+      "location": "Toronto, ON",
+      "max_results": 20
+    }
+  ],
+  "exclude": [
+    "unpaid",
+    "commission only",
+    "sales",
+    "marketing",
+    "financial advisor",
+    "insurance",
+    "campus ambassador",
+    "data entry"
+  ]
+}
