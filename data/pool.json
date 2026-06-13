@@ -10,5 +10,17 @@
     "fetched_at": "2026-06-11",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_5fc8938bd7e3": {
+    "title": "Machine Learning Engineer, NVH",
+    "company": "Tesla",
+    "location": "Richmond Hill, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=b252317d1115a7f8",
+    "description": "**What to Expect**  \n\nTesla's Noise, Vibration, and Harshness (NVH) team is seeking a passionate and skilled\n\n\nMachine Learning Engineer to help define the future of diagnostics for Tesla's products.\n\n\nYou will work at the intersection of deep learning research and real\\-world manufacturing\n\n\ndeployment, building systems that directly impact product quality and customer\n\n\nexperience at scale.\n\n **What You'll Do*** Design, develop, and deploy machine learning models and audio algorithms for advanced NVH diagnostics across Tesla's vehicle and product lineup\n* Build and maintain end\\-to\\-end ML pipelines — from raw audio data ingestion and preprocessing to model training, evaluation, and production deployment\n* Collaborate cross\\-functionally with manufacturing, quality audit, and vehicle engineering teams to integrate diagnostic algorithms into Tesla's production lines\n* Drive continuous improvement of model performance through rigorous experimentation, iteration, and ablation studies\n* ",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-06-13",
+    "evaluated": true,
+    "is_remote": false
   }
 }
