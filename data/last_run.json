@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-06-18",
+  "run_at": "2026-06-19",
   "searches": {
     "quant_dev_intern_toronto": {
       "fetched": 0,
@@ -52,8 +52,8 @@
       "new_to_pool": 0
     },
     "ai_software_cpp_toronto": {
-      "fetched": 2,
-      "after_include": 2,
+      "fetched": 1,
+      "after_include": 1,
       "after_exclude": 0,
       "after_location": 0,
       "after_reject_location": 0,
@@ -62,16 +62,6 @@
       "new_to_pool": 0
     },
     "ml_systems_toronto": {
-      "fetched": 0,
-      "after_include": 0,
-      "after_exclude": 0,
-      "after_location": 0,
-      "after_reject_location": 0,
-      "after_required_terms": 0,
-      "after_post_exclude": 0,
-      "new_to_pool": 0
-    },
-    "ml_compiler_toronto": {
       "fetched": 2,
       "after_include": 2,
       "after_exclude": 0,
@@ -80,8 +70,18 @@
       "after_required_terms": 0,
       "after_post_exclude": 0,
       "new_to_pool": 0
+    },
+    "ml_compiler_toronto": {
+      "fetched": 3,
+      "after_include": 3,
+      "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
+      "new_to_pool": 0
     }
   },
-  "evaluated_at": "2026-06-18",
+  "evaluated_at": "2026-06-19",
   "url_join_warnings": []
 }
