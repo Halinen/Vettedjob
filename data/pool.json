@@ -1,16 +1,4 @@
 {
-  "spy_6148db12f7a0": {
-    "title": "DL System Software Engineer - AI Platform",
-    "company": "NVIDIA",
-    "location": "Toronto, ON, CA",
-    "url": "https://ca.indeed.com/viewjob?jk=7efa334df914dddc",
-    "description": "We are seeking highly motivated and skilled systems engineers to join our team to help in developing an AI Platform that offers an efficient infrastructure for inference and training large scale models. As a systems engineer, you will play a crucial role in building a unified solution that brings our innovative NVIDIA technologies such as high\\-performance, inference/training frameworks, ML compilers, performance predictor, and cluster scheduler into a single, cohesive platform.\n\n**What you will be doing:**\n\n* Taking part in the development of the NVIDIA's AI platform for training, fine\\-tuning and serving latest and greatest AI models with the best performance and efficiency.\n* Designing and building solutions for scheduling large scale AI training and inference workloads on GPU clusters over many cloud infrastructure.\n* Exploring and finding solution for open problems like industry\\-scale resource management, GPU scheduling, performance prediction, and live workload migration.\n* Work",
-    "type": "job",
-    "source": "ml_systems_toronto",
-    "fetched_at": "2026-06-11",
-    "evaluated": true,
-    "is_remote": false
-  },
   "spy_5fc8938bd7e3": {
     "title": "Machine Learning Engineer, NVH",
     "company": "Tesla",
