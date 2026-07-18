@@ -1,1 +1,14 @@
-{}
+{
+  "spy_a37c950218e6": {
+    "title": "Applied Scientist, Demand Tech Planning",
+    "company": "Amazon.com",
+    "location": "Toronto, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=74ee6693a7ee7435",
+    "description": "**DESCRIPTION**\n---------------\n\n\nThe Media Planning Science team develops and implements models that deliver insights and recommendations for strategic media planning and measurement across Amazon Advertising's product portfolio. Our mission is to help advertisers create and execute plans that meet their objectives while providing accurate measurement tools. We work on a multitude of problem statements that encompass Incremental Reach, Budget Planning Optimization, and Recommendations. Our models leverage both heuristic and machine learning approaches including deep learning techniques, with insights delivered through agent\\-based tools and APIs that integrate seamlessly into user interfaces and programmatic systems to ensure optimal advertising outcomes.\n  \n\n  \n\nAs an Applied Scientist on the team, you will be at the forefront of innovation, developing media planning solutions end\\-to\\-end from inception to production. You will propose, design, analyze, and productionize models to pr",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-07-18",
+    "evaluated": true,
+    "is_remote": false
+  }
+}
