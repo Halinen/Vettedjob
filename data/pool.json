@@ -10,5 +10,17 @@
     "fetched_at": "2026-07-18",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_537f8c9dadbb": {
+    "title": "DL Performance Software Engineer - LLM Inference",
+    "company": "NVIDIA",
+    "location": "Toronto, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=03e53bc89304bff0",
+    "description": "We are seeking highly skilled and motivated software engineers to join us and build AI inference systems that serve large\\-scale models with extreme efficiency. You’ll architect and implement high\\-performance inference software, optimize GPU kernels, drive industry benchmarks, and work with state\\-of\\-the\\-art research techniques to improve serving efficiency. You’ll collaborate across inference performance, kernels, training, large\\-scale serving, and research teams to push the frontier of accelerated computing for AI.\n\n **What you’ll be doing:**\n\n* Contribute features to vLLM that empower the newest models with the latest NVIDIA GPU hardware features and serving runtime algorithms.\n* Profile and optimize the inference framework (vLLM) with methods like speculative decoding, 5D Parallelism, and prefill\\-decode disaggregation.\n* Architect novel frameworks and runtime optimizations for inference infrastructure, benchmarking, and kernels.\n* Conduct and publish original research that adv",
+    "type": "job",
+    "source": "ai_software_cpp_toronto",
+    "fetched_at": "2026-08-07",
+    "evaluated": true,
+    "is_remote": false
   }
 }
