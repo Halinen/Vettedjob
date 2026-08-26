@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-08-25",
+  "run_at": "2026-08-26",
   "searches": {
     "quant_dev_intern_toronto": {
       "fetched": 0,
@@ -72,16 +72,16 @@
       "new_to_pool": 0
     },
     "ml_compiler_toronto": {
-      "fetched": 3,
-      "after_include": 3,
-      "after_exclude": 0,
-      "after_location": 0,
-      "after_reject_location": 0,
-      "after_required_terms": 0,
-      "after_post_exclude": 0,
-      "new_to_pool": 0
+      "fetched": 4,
+      "after_include": 4,
+      "after_exclude": 1,
+      "after_location": 1,
+      "after_reject_location": 1,
+      "after_required_terms": 1,
+      "after_post_exclude": 1,
+      "new_to_pool": 1
     }
   },
-  "evaluated_at": "2026-08-25",
+  "evaluated_at": "2026-08-26",
   "url_join_warnings": []
 }

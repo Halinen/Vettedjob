@@ -10,5 +10,17 @@
     "fetched_at": "2026-08-07",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_3917d2e0bf72": {
+    "title": "Engineer, AI Software/Machine Learning (C++)",
+    "company": "Qualcomm",
+    "location": "Markham, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=d667533cb13759de",
+    "description": "**Company:**\n------------\n\nQualcomm Canada ULC\n**Job Area:**\n-------------\n\nEngineering Group, Engineering Group \\> Machine Learning Engineering\n**General Summary:**\n\n**NOTE:**\n\n* ***Our team does not work in data science, build models or train models***\n\nAI’s ability to solve complex problems across multiple domains is transformative. In the AI Software team, we build the Qualcomm AI Engine direct to enables OEMs and developers to run their deep neural network (DNN) models on Qualcomm Hexagon Processors. Our team works with OEMs and developers to develop and optimize DNN models for the Qualcomm AI Stack. We are building optimized on\\-device AI stack with cutting edge hardware to run deep neural networks with that phone you keep in your pocket, that car you drive, or that vacuum cleaner you unleash to clean your house. Come join us if you want to work on bleeding edge AI technology. In this position you will build high performance software for AI engines to extend our AI solutions into",
+    "type": "job",
+    "source": "ml_compiler_toronto",
+    "fetched_at": "2026-08-26",
+    "evaluated": true,
+    "is_remote": false
   }
 }
