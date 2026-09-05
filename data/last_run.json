@@ -1,9 +1,9 @@
 {
-  "run_at": "2026-09-04",
+  "run_at": "2026-09-05",
   "searches": {
     "quant_dev_intern_toronto": {
-      "fetched": 1,
-      "after_include": 1,
+      "fetched": 0,
+      "after_include": 0,
       "after_exclude": 0,
       "after_location": 0,
       "after_reject_location": 0,
@@ -82,6 +82,6 @@
       "new_to_pool": 0
     }
   },
-  "evaluated_at": "2026-09-04",
+  "evaluated_at": "2026-09-05",
   "url_join_warnings": []
 }
