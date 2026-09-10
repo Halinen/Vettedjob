@@ -10,5 +10,17 @@
     "fetched_at": "2026-08-26",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_a521c769c170": {
+    "title": "Generative AI Data Scientist & ML Engineer",
+    "company": "RBC",
+    "location": "Toronto, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=de54439caee064a5",
+    "description": "**Job Description**\n\n**What is the opportunity?**\n\n\nAre you passionate about pushing the boundaries of artificial intelligence? Do you thrive in environments where innovation and cutting\\-edge research are at the forefront? We are offering an exciting opportunity to join our team as a **Data Scientist / Researcher** specializing in **Generative AI Models**. In this role, you will develop and optimize and use Large Language Models (LLM's), to solve complex problems and drive innovation in our AI solutions.\n\n**What will you do?**\n\n\nAs a researcher in this role, you will focus on the technical implementation and optimization of large language models (LLMs) to bring autonomous AI agents to life within a corporate setting. Your responsibilities will include:\n\n* **Fine\\-Tune LLMs:** Customize and optimize pre\\-trained LLMs for specific corporate applications, ensuring high performance and accuracy in various NLP tasks such as text classification, summarization, and entity recognition.\n* **Ve",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-09-10",
+    "evaluated": true,
+    "is_remote": false
   }
 }
