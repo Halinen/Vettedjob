@@ -22,5 +22,29 @@
     "fetched_at": "2026-09-10",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_b24234368934": {
+    "title": "Machine Learning Engineer, AI Processors (New Grad to Engineer Level)",
+    "company": "Qualcomm",
+    "location": "Markham, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=113291ad457b036d",
+    "description": "**Company:**\n------------\n\nQualcomm Canada ULC\n**Job Area:**\n-------------\n\nEngineering Group, Engineering Group \\> Machine Learning Engineering\n**General Summary:**\n\nWe are seeking a talented Machine Learning Engineer to join the Qualcomm AI Processor Solutions team, where you will help develop next\\-generation AI applications for Qualcomm Snapdragon platforms.\n\n\nIn this role, you will work on cutting\\-edge machine learning algorithms and technologies spanning computer vision, multimodal AI, and agentic AI systems, and contribute to research and development of AI applications optimized for accuracy, efficiency, and real\\-world performance on Snapdragon\\-powered devices. **Replacement Position**\n\n**Responsibilities**\n\n* Stay current with the latest advances in artificial intelligence, machine learning, and foundation models.\n* Research, develop, and optimize AI algorithms for deployment on Qualcomm Snapdragon platforms.\n* Design and build innovative reference applications showcasing Sn",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-09-12",
+    "evaluated": true,
+    "is_remote": false
+  },
+  "spy_7e0b3baafc55": {
+    "title": "ML Systems Software Development Engineer Intern, Annapurna Labs - 2027",
+    "company": "Amazon.com",
+    "location": "Toronto, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=319b4beabb3a78c0",
+    "description": "**DESCRIPTION**\n---------------\n\n\nAt Amazon, our tech isn't just a tool, it's your playground. Our engineers work on scalable systems, cloud services, and customer\\-facing products that operate at global scale. This is an environment where you learn by building. Whether you're creating cloud\\-native solutions, optimizing machine learning models, or building products that drive experiences for millions of customers around the globe, your work reaches the world, fast. You'll take ownership early, collaborate across teams and disciplines, and grow your skills as you tackle new problems. There's no single path forward here, with a chance to explore different directions and shape your journey as you go. This is where ambition meets opportunity and, where the impact of what you build helps define what comes next, for customers and for you.\n  \n\n  \n\nWhat's in it for you? An internship at Amazon means real responsibility from day one. You'll build, test, and learn alongside people who want to s",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-09-12",
+    "evaluated": true,
+    "is_remote": false
   }
 }
