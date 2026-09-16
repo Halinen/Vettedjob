@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-09-15",
+  "run_at": "2026-09-16",
   "searches": {
     "quant_dev_intern_toronto": {
       "fetched": 1,
@@ -19,7 +19,7 @@
       "after_reject_location": 1,
       "after_required_terms": 1,
       "after_post_exclude": 1,
-      "new_to_pool": 1
+      "new_to_pool": 0
     },
     "quant_dev_cpp_toronto": {
       "fetched": 0,
@@ -82,6 +82,6 @@
       "new_to_pool": 0
     }
   },
-  "evaluated_at": "2026-09-15",
+  "evaluated_at": "2026-09-16",
   "url_join_warnings": []
 }
