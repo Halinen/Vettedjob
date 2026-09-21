@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-09-20",
+  "run_at": "2026-09-21",
   "searches": {
     "quant_dev_intern_toronto": {
       "fetched": 1,
@@ -12,13 +12,13 @@
       "new_to_pool": 0
     },
     "quant_research_intern_toronto": {
-      "fetched": 3,
-      "after_include": 3,
-      "after_exclude": 2,
-      "after_location": 2,
-      "after_reject_location": 2,
-      "after_required_terms": 2,
-      "after_post_exclude": 2,
+      "fetched": 2,
+      "after_include": 2,
+      "after_exclude": 1,
+      "after_location": 1,
+      "after_reject_location": 1,
+      "after_required_terms": 1,
+      "after_post_exclude": 1,
       "new_to_pool": 0
     },
     "quant_dev_cpp_toronto": {
@@ -82,6 +82,6 @@
       "new_to_pool": 0
     }
   },
-  "evaluated_at": "2026-09-20",
+  "evaluated_at": "2026-09-21",
   "url_join_warnings": []
 }
