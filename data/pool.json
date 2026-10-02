@@ -58,5 +58,17 @@
     "fetched_at": "2026-09-17",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_35b5a8f90a3e": {
+    "title": "Embedded Software Engineer (C/C++), Machine Learning",
+    "company": "Qualcomm",
+    "location": "Markham, ON, CA",
+    "url": "https://ca.indeed.com/viewjob?jk=61308018b520333f",
+    "description": "**Company:**\n------------\n\nQualcomm Canada ULC\n\n**Job Area:**\n-------------\n\nEngineering Group, Engineering Group > Machine Learning Engineering\n\n**General Summary:**\n\n  \n\nAs a member of Low Power AI solution team, you will play a critical role at deploying AI models on Qualcomm's low power AI accelerator.\n\n  \n\nThe position focuses on mapping high level machine learning operators to low level hardware instructions, involving various optimization techniques: graph transformation, scheduling, memory planning, individual operator implementation, quantization, etc.\n\n  \n\nYour expertise at machine learning is expected to enhance inference efficiency and accuracy of different models on Qualcomm's hardware architecture. **New Position**\n\n  \n\n**Skills / Experience Required:**\n\n* Solid hands-on skills and experience on performance optimization.\n* Proficient programming skills in C/C++\n* Machine learning knowledge is a plus..\n* Experience with Linux/Android development environment and tools.\nFami",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-10-02",
+    "evaluated": true,
+    "is_remote": false
   }
 }
