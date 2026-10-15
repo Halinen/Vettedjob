@@ -34,5 +34,17 @@
     "fetched_at": "2026-10-02",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_9187cdf3e3d6": {
+    "title": "ML Software Engineer, Routing",
+    "company": "Lyft",
+    "location": "Toronto, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=edc74dee97f587a9",
+    "description": "At Lyft, our purpose is to serve and connect. We aim to achieve this by cultivating a work environment where all team members belong and have the opportunity to thrive.\n\nOur transport network serves the needs of millions of people every day who want to get from one place to another using Lyft cars, bikes and scooters, or on foot in the most efficient way. To serve these needs, we need to suggest the fastest, most affordable and safest routes.\n\nWe are hiring a Machine Learning Engineer to join our Routing team. Our team builds and maintains Lyft's system responsible for providing routes for every ride request on our platform. We process millions of route requests per day and low latency, high reliability and high accuracy are paramount for our success.\n\nIf you are a critical thinker with experience in machine learning workflows and writing reliable code, passionate about solving business problems using data and working in a dynamic, creative, and collaborative environment, we are search",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-10-15",
+    "evaluated": true,
+    "is_remote": false
   }
 }
