@@ -22,5 +22,17 @@
     "fetched_at": "2026-10-15",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_16eb9de3e640": {
+    "title": "Machine Learning Engineer, AI Processors",
+    "company": "Qualcomm",
+    "location": "Markham, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=051947c6d57b09b6",
+    "description": "**Company:**\n------------\n\nQualcomm Canada ULC\n\n**Job Area:**\n-------------\n\nEngineering Group, Engineering Group > Machine Learning Engineering\n\n**General Summary:**\n\nWe are seeking a talented Machine Learning Engineer to join the Qualcomm AI Processor Solutions team, where you will help develop next-generation AI applications for Qualcomm Snapdragon platforms.\n\n  \n\nIn this role, you will work on cutting-edge machine learning algorithms and technologies spanning computer vision, multimodal AI, and agentic AI systems, and contribute to research and development of AI applications optimized for accuracy, efficiency, and real-world performance on Snapdragon-powered devices. **Replacement Position**\n\n  \n\n**Responsibilities**\n\n* Stay current with the latest advances in artificial intelligence, machine learning, and foundation models.\n* Research, develop, and optimize AI algorithms for deployment on Qualcomm Snapdragon platforms.\n* Design and build innovative reference applications showcasin",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-10-21",
+    "evaluated": true,
+    "is_remote": false
   }
 }
