@@ -34,5 +34,17 @@
     "fetched_at": "2026-10-21",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_19f24f67c56b": {
+    "title": "Software Engineer, Systems ML - Frameworks / Compilers / Kernels | Ingénieur logiciel, Systèmes ML, cadres/Compilateurs/Noyaux",
+    "company": "Meta",
+    "location": "Toronto, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=47ed6e2501fadd77",
+    "description": "In this role, you will be a member of the MTIA (Meta Training & Inference Accelerator) Software team and part of the bigger PyTorch AI framework organization. MTIA Software Team has been developing a comprehensive AI Compiler strategy that delivers a highly flexible platform to train & serve new DL/ML model architectures, combined with auto-tuned high performance for production environments across specialized hardware architectures. The compiler stack, DL graph optimizations, and kernel authoring for specific hardware, directly impacts performance and deployment velocity of both AI training and inference platforms at Meta.You will be working on one of the core areas such as PyTorch framework components, AI compiler and runtime, high-performance kernels and tooling to accelerate machine learning workloads on the current & next generation of MTIA AI hardware platforms. You will work closely with AI researchers to analyze deep learning models and lower them efficiently on MTIA hardware. Y",
+    "type": "job",
+    "source": "ml_systems_toronto",
+    "fetched_at": "2026-10-22",
+    "evaluated": true,
+    "is_remote": false
   }
 }
