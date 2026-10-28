@@ -46,5 +46,17 @@
     "fetched_at": "2026-10-22",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_d21add472f11": {
+    "title": "Compiler Engineer - Triton and DSLs",
+    "company": "Intel Corporation",
+    "location": "Toronto, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=c5fcbc91dd6c40f6",
+    "description": "**Job Details:**\n================\n\n**Job Description:**\n--------------------\n\n**Join Us in Shaping the Future**  \nThe world is transforming, and so is Intel. Intel is a company of bold and curious inventors and problem solvers who create some of the most astounding technology advancements and experiences in the world. With a legacy of relentless innovation and a commitment to bringing smart, connected devices to every person on Earth, our diverse and brilliant teams are continually searching for tomorrow's technology and embracing the challenge of changing the world for the better.\n  \n  \n**Role Overview**  \nJoin our compiler team and contribute to the design, development, and optimization of AI compiler technologies for Triton, Domain Specific Languages (DSLs) and emerging AI programming models. Our team develops software that enables high-performance execution of AI, enabling developers to write highly efficient GPU kernels that power modern machine learning frameworks.\n  \n  \nYou will",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-10-28",
+    "evaluated": true,
+    "is_remote": false
   }
 }
