@@ -46,5 +46,17 @@
     "fetched_at": "2026-10-28",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_4781eb939ea6": {
+    "title": "Machine Learning Engineer, AI Software (C++)",
+    "company": "Qualcomm",
+    "location": "Markham, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=552e006ef8131690",
+    "description": "**Company:**\n------------\n\nQualcomm Canada ULC\n\n**Job Area:**\n-------------\n\nEngineering Group, Engineering Group > Machine Learning Engineering\n\n**General Summary:**\n\nAI is revolutionizing how we solve complex, cross-domain challenges—and Generative AI (GenAI) and Agentic AI is at the forefront of this transformation. As part of the AI Software team, you will contribute to the development of the Qualcomm AI Engine Direct, empowering OEMs and developers to deploy advanced deep neural networks (DNNs) on cutting-edge Qualcomm Hexagon Processors.\n\n  \n\nIn this role, your focus will be on integrating GenAI and Agentic AI capabilities into our on-device AI stack, enabling real-time, high-performance inference across diverse platforms—from smartphones and automotive systems to smart appliances. You will collaborate with OEMs and developers to optimize GenAI-powered models for the Qualcomm AI Stack, ensuring seamless deployment and scalability.\n\n  \n\nJoin us to shape the future of intelligent d",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-11-04",
+    "evaluated": true,
+    "is_remote": false
   }
 }
