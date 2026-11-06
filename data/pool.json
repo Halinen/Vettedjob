@@ -58,5 +58,29 @@
     "fetched_at": "2026-11-04",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_015bf8b28b14": {
+    "title": "Applied Scientist II, Sponsored Products and Brands Agent",
+    "company": "Amazon.com",
+    "location": "Toronto, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=50b3fad9ccd00f82",
+    "description": "**DESCRIPTION**\n---------------\n\nThe Sponsored Products and Brands team at Amazon Ads is re-imagining advertising through generative AI technologies, transforming how millions of customers discover products and engage with brands across Amazon.com and beyond. We are bridging human creativity with artificial intelligence to transform every aspect of the advertising lifecycle, from ad creation and optimization to performance analysis and customer insights. We are a passionate group of innovators dedicated to developing responsible and intelligent AI technologies that balance the needs of advertisers, enhance the shopping experience, and strengthen the marketplace. If you're energized by solving complex challenges and pushing the boundaries of what's possible with AI, join us in shaping the future of advertising.  \n  \nKey job responsibilities  \n\n* Design and implement machine learning models and algorithms that power advertiser-facing AI experiences, ensuring scientific rigor from researc",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-11-06",
+    "evaluated": true,
+    "is_remote": false
+  },
+  "spy_e94a9761ae92": {
+    "title": "Software Engineer, Machine Learning",
+    "company": "Qualcomm",
+    "location": "Markham, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=ac681ed6aa07f222",
+    "description": "**Company:**\n------------\n\nQualcomm Canada ULC\n\n**Job Area:**\n-------------\n\nEngineering Group, Engineering Group > Machine Learning Engineering\n\n**General Summary:**\n\n  \n\n**NOTE:**\n\n* ***Our team does not work in data science, build models or train models***\n\n  \n\nAI’s ability to solve complex problems across multiple domains is transformative. In the AI Software team, we build the Qualcomm AI Engine direct to enables OEMs and developers to run their deep neural network (DNN) models on Qualcomm Hexagon Processors. Our team works with OEMs and developers to develop and optimize DNN models for the Qualcomm AI Stack. We are building optimized on-device AI stack with cutting edge hardware to run deep neural networks with that phone you keep in your pocket, that car you drive, or that vacuum cleaner you unleash to clean your house. Come join us if you want to work on bleeding edge AI technology. In this position you will build high performance software for AI engines to extend our AI soluti",
+    "type": "job",
+    "source": "ml_compiler_toronto",
+    "fetched_at": "2026-11-06",
+    "evaluated": true,
+    "is_remote": false
   }
 }
