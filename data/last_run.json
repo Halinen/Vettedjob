@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-13",
+  "run_at": "2026-11-14",
   "searches": {
     "quant_dev_intern_toronto": {
       "fetched": 0,
@@ -42,26 +42,6 @@
       "new_to_pool": 0
     },
     "system_mle_toronto": {
-      "fetched": 3,
-      "after_include": 3,
-      "after_exclude": 0,
-      "after_location": 0,
-      "after_reject_location": 0,
-      "after_required_terms": 0,
-      "after_post_exclude": 0,
-      "new_to_pool": 0
-    },
-    "ai_software_cpp_toronto": {
-      "fetched": 4,
-      "after_include": 4,
-      "after_exclude": 0,
-      "after_location": 0,
-      "after_reject_location": 0,
-      "after_required_terms": 0,
-      "after_post_exclude": 0,
-      "new_to_pool": 0
-    },
-    "ml_systems_toronto": {
       "fetched": 1,
       "after_include": 1,
       "after_exclude": 0,
@@ -71,7 +51,7 @@
       "after_post_exclude": 0,
       "new_to_pool": 0
     },
-    "ml_compiler_toronto": {
+    "ai_software_cpp_toronto": {
       "fetched": 3,
       "after_include": 3,
       "after_exclude": 0,
@@ -80,8 +60,28 @@
       "after_required_terms": 0,
       "after_post_exclude": 0,
       "new_to_pool": 0
+    },
+    "ml_systems_toronto": {
+      "fetched": 0,
+      "after_include": 0,
+      "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
+      "new_to_pool": 0
+    },
+    "ml_compiler_toronto": {
+      "fetched": 1,
+      "after_include": 1,
+      "after_exclude": 0,
+      "after_location": 0,
+      "after_reject_location": 0,
+      "after_required_terms": 0,
+      "after_post_exclude": 0,
+      "new_to_pool": 0
     }
   },
-  "evaluated_at": "2026-11-13",
+  "evaluated_at": "2026-11-14",
   "url_join_warnings": []
 }
