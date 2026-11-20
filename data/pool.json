@@ -70,5 +70,17 @@
     "fetched_at": "2026-11-06",
     "evaluated": true,
     "is_remote": false
+  },
+  "spy_bec93462330a": {
+    "title": "AI & Algorithms Engineer",
+    "company": "Qualcomm",
+    "location": "Markham, ON, Canada",
+    "url": "https://ca.indeed.com/viewjob?jk=cc58c38d2d682461",
+    "description": "**Company:**\n------------\n\nQualcomm Canada ULC\n\n**Job Area:**\n-------------\n\nEngineering Group, Engineering Group > Machine Learning Engineering\n\n**General Summary:**\n\nWe are seeking motivated AI & Algorithms Engineers to join the Qualcomm AI Processor Solutions team, where you will help develop, implement, and optimize next-generation algorithms and applications for Qualcomm Snapdragon platforms.\n\n  \n  \n\nIn this role, you will work on machine learning and computational algorithms across areas such as computer vision, image and signal processing, neural rendering, and multimodal AI. You will contribute to algorithm development, explore hardware and software trade-offs, and build innovative reference applications optimized for Snapdragon hardware, including the GPU, NPU, and Hexagon DSP.\n\n  \n  \n\nThis role offers opportunities to work across algorithm development, hardware-aware optimization, and hands-on prototyping, collaborating with experienced engineers to bring innovative algorithm",
+    "type": "job",
+    "source": "system_mle_toronto",
+    "fetched_at": "2026-11-20",
+    "evaluated": true,
+    "is_remote": false
   }
 }
