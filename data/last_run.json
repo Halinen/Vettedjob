@@ -72,8 +72,8 @@
       "new_to_pool": 0
     },
     "ml_compiler_toronto": {
-      "fetched": 1,
-      "after_include": 1,
+      "fetched": 2,
+      "after_include": 2,
       "after_exclude": 0,
       "after_location": 0,
       "after_reject_location": 0,
